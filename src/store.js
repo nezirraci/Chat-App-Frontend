@@ -4,6 +4,8 @@ import uiReducer from './storeslices/uiSlice';
 import contactsReducer from './storeslices/contactsSlice';
 import chatRoomsReducer from './storeslices/chatRoomsSlice';
 import messagesReducer from './storeslices/messagesSlice'
+import loggerMiddleware from './middleware/loggerMiddleware';
+import webSocketMiddleware from './middleware/webSocketMiddleware';
 
 export const store = configureStore({
   reducer: {
@@ -13,4 +15,6 @@ export const store = configureStore({
     chatRooms: chatRoomsReducer,
     messages:messagesReducer
   },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat([loggerMiddleware,webSocketMiddleware])}
 });

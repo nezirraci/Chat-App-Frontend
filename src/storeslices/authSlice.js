@@ -7,7 +7,8 @@ const initialState = {
   error:null,
   isAuthenticated: false,
   userDetails: null,
-  userStatus:null
+  userStatus:null,
+  signalRConnection:false,
 };
 
 const authSlice = createSlice({
@@ -30,6 +31,7 @@ const authSlice = createSlice({
       state.isAuthenticated=false
       state.userDetails=null
       state.userStatus=null
+      state.signalRConnection=false;
     },
     changeUserDetails: (state,action)=> {
       const userData=action.payload;
@@ -46,6 +48,9 @@ const authSlice = createSlice({
     refreshToken: (state, action) => {
       const data=action.payload;
       state.token=data.newToken;
+    },
+    initiateSignalRConnection:(state,action) => {
+      state.signalRConnection=true;
     }
     // Other reducers go here
   },
@@ -54,5 +59,5 @@ const authSlice = createSlice({
     }
 });
 
-export const { loadUserData,refreshToken,changeUserStatus,changeUserDetails,changeProfilePicture,resetState } = authSlice.actions;
+export const { loadUserData,refreshToken,changeUserStatus,changeUserDetails,changeProfilePicture,resetState,initiateSignalRConnection } = authSlice.actions;
 export default authSlice.reducer;

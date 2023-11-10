@@ -2,7 +2,7 @@ import {useState} from 'react';
  import AuthService from '../../services/AuthService';
 import { useNavigate,Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loadUserData } from '../../storeslices/authSlice';
+import { loadUserData,initiateSignalRConnection } from '../../storeslices/authSlice';
 
 function LoginScreen()   {
 
@@ -18,6 +18,7 @@ async function Login(event) {
 
    if(result.Succeded) {
         dispatch(loadUserData(result));
+        dispatch(initiateSignalRConnection());
         navigate("/Home");
    }
    else {
