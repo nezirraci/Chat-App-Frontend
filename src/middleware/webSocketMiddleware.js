@@ -9,10 +9,10 @@ const webSocketMiddleware = store => next => action => {
             .withAutomaticReconnect()
             .build();
             connection.start();
-    console.log(connection,"CONNECTION");
-    console.log(action);
+        console.log(connection,"CONNECTION");
+        console.log(action);
     
-    connection.on('ReceiveMessage',(message)=> {
+        connection.on('ReceiveMessage',(message)=> {
         store.dispatch(AddChatRoomMessage({ChatRoomId:message.chatRoomId,Message:message}));
    
     });

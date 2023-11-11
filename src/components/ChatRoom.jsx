@@ -11,6 +11,8 @@ import { useRef,useState } from "react";
 function ChatRoom() {
 
   const selectedChatRoom=useSelector(state => state.chatRooms.selectedChatRoom);
+  const showChatRoom=useSelector(state => state.ui.showChatRoom);
+  console.log(showChatRoom,'SHOWCHATROOOM');
   const ProfileSideBar=useRef(null);
   const [searchConversationCharacters,setSearchingConversationCharacters]=useState("");
 
@@ -22,7 +24,7 @@ function ChatRoom() {
     return ( 
         <>
         {selectedChatRoom!=null ? 
-        <div className="user-chat w-100 overflow-hidden user-chat-show">
+        <div  className="user-chat w-100 overflow-hidden user-chat-show" style={{display:showChatRoom ? 'block':'none'}}>
         <div className="d-lg-flex">
            <div className="w-100 overflow-hidden position-relative">
               <ChatRoomHead Contact={selectedChatRoom.contact} OpenSideBar={OpenSideBar} SetSearchCharacters={setSearchingConversationCharacters}/>

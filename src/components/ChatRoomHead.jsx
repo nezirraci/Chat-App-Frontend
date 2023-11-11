@@ -1,10 +1,18 @@
-
+import { useDebugValue } from "react";
+import { closeChatRoom } from "../storeslices/uiSlice";
+import { useDispatch } from "react-redux";
 
 function ChatRoomHead(props) {
 
   const Contact=props.Contact;  
   const OpenSideBar=props.OpenSideBar;
   const SetSearchCharacters=props.SetSearchCharacters;
+  const dispatch=useDispatch();
+
+  function hideChatRoom() {
+    dispatch(closeChatRoom());
+  }
+
     return (  
         <>
         <div className="p-3 p-lg-4 border-bottom user-chat-topbar">
@@ -13,7 +21,7 @@ function ChatRoomHead(props) {
             <div className="d-flex align-items-center">
               <div className="d-block d-lg-none me-2 ms-0">
                 <a
-                  href="javascript: void(0);"
+                  onClick={(event) => hideChatRoom()}
                   className="user-chat-remove text-muted font-size-16 p-2"
                 >
                   <i className="ri-arrow-left-s-line" />

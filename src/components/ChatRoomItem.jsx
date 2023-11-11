@@ -1,6 +1,7 @@
 import { useDebugValue } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedChatRoom } from "../storeslices/chatRoomsSlice";
+import { showChatRoom } from "../storeslices/uiSlice";
 
   
   function ChatRoomItem(props) {
@@ -12,6 +13,7 @@ import { setSelectedChatRoom } from "../storeslices/chatRoomsSlice";
 
     async function setSelectedChatRoomData() {
       dispatch(setSelectedChatRoom(chatRoomItemData));
+      dispatch(showChatRoom());
     }
 
     return ( <>

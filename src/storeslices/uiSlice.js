@@ -2,7 +2,8 @@ import {  createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   backgroundFade:false,
-  addContactModal:false
+  addContactModal:false,
+  showChatRoom:false
 };
 
 const uiSlice = createSlice({
@@ -16,6 +17,12 @@ const uiSlice = createSlice({
     closeAddContactModal: (state,action)=> {
         state.addContactModal=false;
         state.backgroundFade=false;
+    },
+    showChatRoom:(state,action) => {
+      state.showChatRoom=true;
+    },
+    closeChatRoom:(state,action) => {
+      state.showChatRoom=false;
     }
     // Other reducers go here
   },
@@ -24,5 +31,5 @@ const uiSlice = createSlice({
     }
 });
 
-export const { showAddContactModal,closeAddContactModal } = uiSlice.actions;
+export const { showAddContactModal,closeAddContactModal,showChatRoom,closeChatRoom } = uiSlice.actions;
 export default uiSlice.reducer;
